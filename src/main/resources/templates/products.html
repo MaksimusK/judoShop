@@ -12,9 +12,19 @@
 
         <li th:each="product : ${products}">
             <p><b>[[${product.title}]]</b> | <b>[[${product.price}]] | <a href="/product/${prodict.id}">Подробнее...</a> </b><p>
-<!--            Название: [[${product.getTitle}]], Цена: [[${product.getPrice}]]-->
         </li>
     </ul>
+    <h3>Создать товар</h3>
+    <form action="/product/create" method="post">
+        Название товара: <input type="text"  name="title"/><br><br>
+        Тип товара: <input type="text"  name="type"/><br><br>
+        Описание товара: <input type="text"  name="description"/><br><br>
+        Цена товара: <input type="number"  name="price"/><br><br>
+        Город товара: <input type="text"  name="city"/><br><br>
+        Производитель товара: <input type="text"  name="manufacturer"/><br><br>
+        <input type="submit" value="Добавить товар"></input>
+    </form>
+
 
 </body>
 </html>
