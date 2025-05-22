@@ -5,7 +5,16 @@
     <title>Thymeleaf Example</title>
 </head>
 <body>
-<h1 >Добро пожаловать в магазин judo</h1>
+    <h1>Добро пожаловать в магазин judo</h1>
+    <br>
+    <h4>Товары</h4>
+    <ul>
+
+        <li th:each="product : ${products}">
+            <p><b>[[${product.title}]]</b> | <b>[[${product.price}]] | <a href="/product/${prodict.id}">Подробнее...</a> </b><p>
+<!--            Название: [[${product.getTitle}]], Цена: [[${product.getPrice}]]-->
+        </li>
+    </ul>
 
 </body>
 </html>
