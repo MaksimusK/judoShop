@@ -13,7 +13,7 @@ public class ProductService {
     private Long ID = 0L;
 
     {
-        products.add(new Product(++ID,"MIZUNO Yusho 3", "Кимоно", "Японское качесвто", 20_000, "Новосибирск", "MIZUNO"));
+        products.add(new Product(++ID,"MIZUNO Yusho 3", "Кимоно", "Японское качесвто", 20_000, "Токио", "MIZUNO"));
         products.add(new Product(++ID,"ADIDAS Champion 2", "Кимоно", "Надежное и плотное", 30_000, "Москва","ADIDAS"));
     }
 
@@ -31,4 +31,12 @@ public class ProductService {
     }
 
 
+    public Product getProductById(Long id) {
+        for (Product product : products) {
+            if (product.getId().equals(id)){
+                return product;
+            }
+        }
+        return null;
+    }
 }

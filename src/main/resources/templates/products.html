@@ -11,7 +11,11 @@
     <ul>
 
         <li th:each="product : ${products}">
-            <p><b>[[${product.title}]]</b> | <b>[[${product.price}]] | <a href="/product/${prodict.id}">Подробнее...</a> </b><p>
+            <p>
+                <b>[[${product.title}]]</b> |
+                <b>[[${product.price}]]</b> |
+                <a th:href="@{/product/{id}(id=${product.id})}">Подробнее...</a>
+            </p>
         </li>
     </ul>
     <h3>Создать товар</h3>
@@ -24,6 +28,7 @@
         Производитель товара: <input type="text"  name="manufacturer"/><br><br>
         <input type="submit" value="Добавить товар"></input>
     </form>
+
 
 
 </body>
