@@ -8,6 +8,13 @@
     <h1>Добро пожаловать в магазин judo</h1>
     <br>
     <h4>Товары</h4>
+    <form>
+        Поиск по названию: <input type="text" name="title"/><br>
+        <input type="submit" value="Поиск"/>
+    </form><br>
+    <form action="/" >
+        Обновить:<br><input type="submit" value="Обновить"/>
+    </form>
     <ul>
 
         <li th:each="product : ${products}">

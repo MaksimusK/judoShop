@@ -1,42 +1,44 @@
 package com.example.judoShop.services;
 
 import com.example.judoShop.models.Product;
+import com.example.judoShop.repositories.ProductRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Slf4j
+@RequiredArgsConstructor
 public class ProductService {
 
-    private List<Product> products = new ArrayList<>();
-    private Long ID = 0L;
+    private final ProductRepository productRepository;
 
-    {
-        products.add(new Product(++ID,"MIZUNO Yusho 3", "Кимоно", "Японское качесвто", 20_000, "Токио", "MIZUNO"));
-        products.add(new Product(++ID,"ADIDAS Champion 2", "Кимоно", "Надежное и плотное", 30_000, "Москва","ADIDAS"));
+    public List<Product> getProductAll(String title){
+        if(title != null){
+            return productRepository.findByTitle(title);
+        }
+        return productRepository.findAll();
     }
 
     public List<Product> getAllProducts(){
-        return products;
+        return productRepository.findAll();
     }
 
     public void saveProduct(Product product){
-        product.setId(++ID);
-        products.add(product);
+        log.info("Saving new {}", product);
+        productRepository.save(product);
     }
 
     public void deleteProduct(Long id){
-        products.removeIf(product -> product.getId().equals(id));
+        productRepository.deleteById(id);
     }
 
 
     public Product getProductById(Long id) {
-        for (Product product : products) {
-            if (product.getId().equals(id)){
-                return product;
-            }
-        }
-        return null;
+
+        return productRepository.findById(id).orElse(null);
     }
 }
