@@ -26,13 +26,16 @@
         </li>
     </ul>
     <h3>Создать товар</h3>
-    <form action="/product/create" method="post">
+    <form action="/product/create" method="post" enctype="multipart/form-data">
         Название товара: <input type="text"  name="title"/><br><br>
         Тип товара: <input type="text"  name="type"/><br><br>
         Описание товара: <input type="text"  name="description"/><br><br>
         Цена товара: <input type="number"  name="price"/><br><br>
         Город товара: <input type="text"  name="city"/><br><br>
         Производитель товара: <input type="text"  name="manufacturer"/><br><br>
+        Первая фотография: <input type="file"  name="file1"/><br><br>
+        Вторая фотография: <input type="file"  name="file2"/><br><br>
+        Третья фотография: <input type="file"  name="file3"/><br><br>
         <input type="submit" value="Добавить товар"></input>
     </form>
 
