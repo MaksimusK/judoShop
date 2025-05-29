@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>JudoShop</title>
+</head>
+<body>
+<h1>JudoShop</h1><hr>
+<h4>Авторизация</h4>
+
+<div th:if="${param.error}" style="color: red;">
+    Неверная почта или пароль
+</div>
+
+<form th:action="@{/login}" method="post">
+    Эл.почта: <input type="email" name="username" required><br><br>
+    Пароль: <input type="password" name="password" required><br><br>
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+    <input type="submit" value="Вход"/>
+</form>
+
+<a th:href="@{/registration}">Зарегистрироваться</a>
+
+</body>
+</html>
