@@ -13,6 +13,7 @@
             <input type="submit" value="Выйти"/>
         </form>
     </div>
+    <a th:if="${users.isAdmin()}" th:href="@{/admin}">Панель администратора</a>
     <div th:unless="${users?.email}">
         <a th:href="@{/login}">Войти</a>
     </div>
