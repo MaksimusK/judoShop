@@ -27,7 +27,7 @@ public class SecurityConfig {
         http
 
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/login","/product/**", "/images/**", "/registration").permitAll() // публичные эндпоинты
+                        .requestMatchers("/", "/login","/product/**", "/images/**", "/registration", "/user/**").permitAll() // публичные эндпоинты
                         .anyRequest().authenticated() // все остальные требуют аутентификации
                 )
                 .formLogin(form -> form

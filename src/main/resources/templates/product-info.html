@@ -24,6 +24,7 @@
     <b>Цена: </b><span th:text="${#numbers.formatCurrency(product.price)}"></span><br>
     <b>Город: </b><span th:text="${product.city}"></span><br>
     <b>Производитель: </b><span th:text="${product.manufacturer}"></span><br>
+    <b>Автор: </b><a th:href="@{/user/{id}(id=${product.users.id})}">[[${product.users.getName}]]</a><br>
 </div>
 
 
