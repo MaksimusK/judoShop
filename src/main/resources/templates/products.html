@@ -5,7 +5,17 @@
     <title>Thymeleaf Example</title>
 </head>
 <body>
-    <h1>JudoShop | <a th:href="@{/login}">Войти</a></h1>
+    <h1>JudoShop</h1>
+    <div th:if="${users?.email}">
+        <h3>Имя пользователя: <i th:text="${users.name}"></i></h3>
+        <form th:action="@{/logout}" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+            <input type="submit" value="Выйти"/>
+        </form>
+    </div>
+    <div th:unless="${users?.email}">
+        <a th:href="@{/login}">Войти</a>
+    </div>
     <br>
     <h4>Товары</h4>
     <form>
@@ -25,19 +35,26 @@
             </p>
         </li>
     </ul>
-    <h3>Создать товар</h3>
-    <form action="/product/create" method="post" enctype="multipart/form-data">
-        Название товара: <input type="text"  name="title"/><br><br>
-        Тип товара: <input type="text"  name="type"/><br><br>
-        Описание товара: <input type="text"  name="description"/><br><br>
-        Цена товара: <input type="number"  name="price"/><br><br>
-        Город товара: <input type="text"  name="city"/><br><br>
-        Производитель товара: <input type="text"  name="manufacturer"/><br><br>
-        Первая фотография: <input type="file"  name="file1"/><br><br>
-        Вторая фотография: <input type="file"  name="file2"/><br><br>
-        Третья фотография: <input type="file"  name="file3"/><br><br>
-        <input type="submit" value="Добавить товар"></input>
-    </form>
+    <div th:if="${#lists.isEmpty(products)}">
+        <h3>Товаров нет</h3>
+    </div>
+    <div th:if="${users?.email}">
+        <h3>Создать товар</h3>
+        <form action="/product/create" method="post" enctype="multipart/form-data">
+            Название товара: <input type="text"  name="title"/><br><br>
+            Тип товара: <input type="text"  name="type"/><br><br>
+            Описание товара: <input type="text"  name="description"/><br><br>
+            Цена товара: <input type="number"  name="price"/><br><br>
+            Город товара: <input type="text"  name="city"/><br><br>
+            Производитель товара: <input type="text"  name="manufacturer"/><br><br>
+            Первая фотография: <input type="file"  name="file1"/><br><br>
+            Вторая фотография: <input type="file"  name="file2"/><br><br>
+            Третья фотография: <input type="file"  name="file3"/><br><br>
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+            <input type="submit" value="Добавить товар"></input>
+        </form>
+    </div>
+
 
 
 

@@ -47,6 +47,10 @@ public class Product {
     private Long previewImageId;
     private LocalDateTime dateOfCreated;
 
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn
+    private User users;
+
     @PrePersist
     private void init() {
         dateOfCreated = LocalDateTime.now();

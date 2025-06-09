@@ -26,10 +26,11 @@ public class Image {
     @Column(name = "isPreviewImage")
     private boolean isPreviewImage;
     @Lob
+    @Basic(fetch = FetchType.LAZY)
     private byte[] bytes;
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Product product;
 
-    @OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-    private Image image;
+//    @OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+//    private Image image;
 }
